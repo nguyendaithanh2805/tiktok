@@ -75,7 +75,7 @@ class OOP:
             self.demNV += 1
         if self.demNV == 8:
             self.nhanXu()
-            self.demNV = 1
+            self.demNV = 0
     def follow(self, link_value):
         url = 'termux-open-url {}'.format(link_value)
         os.system(url)
