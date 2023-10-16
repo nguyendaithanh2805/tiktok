@@ -72,7 +72,7 @@ class OOP:
         print("----")
         for i in range(1, dataGNV['cache'] + 1):
             self.demNV += 1
-            if self.demNV == 8:
+            if self.demNV == 9:
                 self.nhanXu()
                 self.demNV = 1
     def follow(self, link_value):
@@ -81,14 +81,16 @@ class OOP:
     def nhanXu(self):
         url = 'https://traodoisub.com/api/coin/?type=TIKTOK_FOLLOW&id=TIKTOK_FOLLOW_API&access_token={}'.format(TDS_token)
         response = self.s.get(url)
-        dataNX = response.json()
-        if 'data' in dataNX:
-            xu = dataNX['data']['xu']
-            job_success = dataNX['data']['job_success']
-            xuthem = dataNX['data']['xu_them']
-            msg = dataNX['data']['msg']
-            get = '{0} | {1} | {2} | {3}'.format(xu, job_success, xuthem, msg)
+        if response.status_code == 200:
+            dataNX = response.json()
+            xu = dataNX['xu']
+            job_success = dataNX['job_success']
+            xuthem = dataNX['xu_them']
+            msg = dataNX['msg']
+            get = f"{xu} | {job_success} | {xuthem} | {msg}"
             print(get)
+        else:
+            print(f"Yêu cầu không thành công. Mã trạng thái: {response.status_code}")
 # os.system('termux-open-url https:\/\/tiktok.com\/@nguyenngocquang004')
 TDS_token = 'TDSQfikjclZXZzJiOiIXZ2V2ciwiIxETMxgmbhhGdpFGZiojIyV2c1Jye'
 tiktokID = '7112712057212584962'
