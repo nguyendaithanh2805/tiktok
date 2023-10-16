@@ -68,13 +68,12 @@ class OOP:
         response = self.s.get(url)
         dataGNV = response.json()
         print("----")
-        print(dataGNV)
         print(dataGNV['cache'])
         print("----")
         for i in range(1, dataGNV['cache'] + 1):
-            self.nhanXu()
             self.demNV += 1
-            if self.demNV > 8:
+            if self.demNV == 8:
+                self.nhanXu()
                 self.demNV = 1
     def follow(self, link_value):
         url = 'termux-open-url {}'.format(link_value)
