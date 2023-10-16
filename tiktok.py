@@ -98,6 +98,5 @@ class OOP:
 TDS_token = 'TDSQfikjclZXZzJiOiIXZ2V2ciwiIxETMxgmbhhGdpFGZiojIyV2c1Jye'
 tiktokID = '7170579645727867931'
 api = OOP(TDS_token, tiktokID)
-# api.datCauHinh()
-# api.layNhiemVu()
-api.nhanXu()
+api.datCauHinh()
+api.layNhiemVu()
