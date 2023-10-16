@@ -54,6 +54,11 @@ class OOP:
                         self.guiNhiemVu(id_value)
                         time.sleep(5)
                         self.follow(link_value)
+                        self.demNV += 1
+                        if self.demNV == 9:
+                            self.nhanXu()
+                            self.demNV = 0
+                            continue
                         # for i in range(len(arr_link_value)):
                         #     link_value = arr_link_value[i]
                         #     print(link_value)
@@ -69,12 +74,12 @@ class OOP:
         response = self.s.get(url)
         dataGNV = response.json()
         print(dataGNV)
-        for i in range(1, dataGNV['cache'] + 1):
-            self.demNV += 1
-            if self.demNV == 9:
-                self.nhanXu()
-                self.demNV = 0
-                continue
+        # for i in range(1, dataGNV['cache'] + 1):
+        #     self.demNV += 1
+        #     if self.demNV == 9:
+        #         self.nhanXu()
+        #         self.demNV = 0
+        #         continue
     def follow(self, link_value):
        os.system(f'termux-open-url {link_value}')
     def nhanXu(self):
@@ -83,10 +88,10 @@ class OOP:
         dataNX = response.json()
         if response.status_code == 200:
             if 'data' in dataNX:
-                xu = dataNX['xu']
-                job_success = dataNX['job_success']
-                xuthem = dataNX['xu_them']
-                msg = dataNX['msg']
+                xu = dataNX['data']['xu']
+                job_success = dataNX['data']['job_success']
+                xuthem = dataNX['data']['xu_them']
+                msg = dataNX['data']['msg']
                 xuTong = int(re.search(r'\d+', msg).group())
                 self.xuHienTai += xuTong
                 print(f"{xu} | {job_success} | {xuthem} | {msg} | {xuTong} | {self.xuHienTai}")
