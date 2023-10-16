@@ -57,23 +57,22 @@ class OOP:
                         for i in range(len(arr_link_value)):
                             link_value = arr_link_value[i]
                             id_value = arr_id_value[i]
-                            self.guiNhiemVu(id_value)
-                            time.sleep(5)
-                            self.follow(link_value)
+                            self.guiNhiemVu(id_value, link_value)
+                            
                     except:
                         print('het nv')
             except json.JSONDecodeError:
                 print("Error decoding JSON response.")
-    def guiNhiemVu(self, id_value):
+    def guiNhiemVu(self, id_value, link_value):
         url = 'https://traodoisub.com/api/coin/?type=TIKTOK_FOLLOW_CACHE&id={0}&access_token={1}'.format(id_value, self.TDS_token)
         response = self.s.get(url)
         dataGNV = response.json()
-        print(dataGNV['cache'])
-        print("----")
+        print(dataGNV)
         for i in range(1, dataGNV['cache'] + 1):
-            print('i')
             print(i)
+            self.follow(link_value)
             self.demNV += 1
+            time.sleep(5)
             if self.demNV == 8:
                 self.nhanXu()
                 self.demNV = 0
