@@ -24,7 +24,6 @@ class OOP:
         url = 'https://traodoisub.com/api/?fields=tiktok_run&id={0}&access_token={1}'.format(self.tiktokID, self.TDS_token)
         response = self.s.get(url)
         dataDCH = json.loads(response.text)
-        print(dataDCH)
         if('error' in dataDCH):
             print('Kiểm tra lại xem cấu hình tiktok chưa')
             exit()
@@ -37,7 +36,6 @@ class OOP:
         while(True):
             url = 'https://traodoisub.com/api/?fields=tiktok_follow&access_token={}'.format(self.TDS_token)
             response = self.s.get(url)
-            data = response.json()
             try:
                 data = json.loads(response.text)
                 if 'countdown' in data:
@@ -51,13 +49,13 @@ class OOP:
                     exit()
                 else:
                     try:
-                        arr_link_value = [item['link'] for item in data['data']]
-                        arr_id_value = [item['id'] for item in data['data']]
-                        # return arr_link_value, arr_id_value
+                        arr_link_value = [item['link'] for item in data]
+                        arr_id_value = [item['id'] for item in data]
                         for i in range(len(arr_link_value)):
                             link_value = arr_link_value[i]
                             id_value = arr_id_value[i]
                             self.guiNhiemVu(id_value)
+                            time.sleep(5)
                             self.follow(link_value)
                     except:
                         print('het nv')
@@ -83,13 +81,16 @@ class OOP:
         response = self.s.get(url)
         if response.status_code == 200:
             dataNX = response.json()
-            xu = dataNX['data']['xu']
-            job_success = dataNX['data']['job_success']
-            xuthem = dataNX['data']['xu_them']
-            msg = dataNX['data']['msg']
-            xuTong = int(re.search(r'\d+', msg).group())
-            self.xuHienTai += xuTong
-            print(f"{xu} | {job_success} | {xuthem} | {msg} | {xuTong} | {self.xuHienTai}")
+            if 'data' in dataNX:
+                xu = dataNX['data']['xu']
+                job_success = dataNX['data']['job_success']
+                xuthem = dataNX['data']['xu_them']
+                msg = dataNX['data']['msg']
+                xuTong = int(re.search(r'\d+', msg).group())
+                self.xuHienTai += xuTong
+                print(f"{xu} | {job_success} | {xuthem} | {msg} | {xuTong} | {self.xuHienTai}")
+            else:
+                pass
         else:
             print(f"Yêu cầu không thành công. Mã trạng thái: {response.status_code}")
 # os.system('termux-open-url https:\/\/tiktok.com\/@nguyenngocquang004')
