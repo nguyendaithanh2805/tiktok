@@ -80,23 +80,24 @@ class OOP:
     def nhanXu(self):
         url = 'https://traodoisub.com/api/coin/?type=TIKTOK_FOLLOW&id=TIKTOK_FOLLOW_API&access_token={}'.format(self.TDS_token)
         response = self.s.get(url)
+        dataNX = response.json()
         if response.status_code == 200:
-            dataNX = response.json()
             if 'data' in dataNX:
-                xu = dataNX['data']['xu']
-                job_success = dataNX['data']['job_success']
-                xuthem = dataNX['data']['xu_them']
-                msg = dataNX['data']['msg']
+                xu = dataNX['xu']
+                job_success = dataNX['job_success']
+                xuthem = dataNX['xu_them']
+                msg = dataNX['msg']
                 xuTong = int(re.search(r'\d+', msg).group())
                 self.xuHienTai += xuTong
                 print(f"{xu} | {job_success} | {xuthem} | {msg} | {xuTong} | {self.xuHienTai}")
             else:
-                pass
+                print("eror")
         else:
             print(f"Yêu cầu không thành công. Mã trạng thái: {response.status_code}")
 # os.system('termux-open-url https:\/\/tiktok.com\/@nguyenngocquang004')
 TDS_token = 'TDSQfikjclZXZzJiOiIXZ2V2ciwiIxETMxgmbhhGdpFGZiojIyV2c1Jye'
-tiktokID = '7286322136226071553'
+tiktokID = '7170579645727867931'
 api = OOP(TDS_token, tiktokID)
-api.datCauHinh()
-api.layNhiemVu()
+# api.datCauHinh()
+# api.layNhiemVu()
+api.nhanXu()
