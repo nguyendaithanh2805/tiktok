@@ -5,6 +5,7 @@ class OOP:
         self.TDS_token = TDS_token
         self.tiktokID = tiktokID
         self.demNV = 0
+        self.xuHienTai = 0
         self.s = requests.Session()
     def layThongTinAcc(self):
         url = 'https://traodoisub.com/api/?fields=profile&access_token={0}'.format(self.TDS_token)
@@ -73,28 +74,28 @@ class OOP:
             print('i')
             print(i)
             self.demNV += 1
-        if self.demNV == 8:
-            self.nhanXu()
-            self.demNV = 0
+            if self.demNV == 8:
+                self.nhanXu()
+                self.demNV = 0
     def follow(self, link_value):
-        url = 'termux-open-url {}'.format(link_value)
-        os.system(url)
+       os.system(f'termux-open-url {link_value}')
     def nhanXu(self):
-        url = 'https://traodoisub.com/api/coin/?type=TIKTOK_FOLLOW&id=TIKTOK_FOLLOW_API&access_token={}'.format(TDS_token)
+        url = 'https://traodoisub.com/api/coin/?type=TIKTOK_FOLLOW&id=TIKTOK_FOLLOW_API&access_token={}'.format(self.TDS_token)
         response = self.s.get(url)
         if response.status_code == 200:
             dataNX = response.json()
-            xu = dataNX['xu']
-            job_success = dataNX['job_success']
-            xuthem = dataNX['xu_them']
-            msg = dataNX['msg']
-            get = f"{xu} | {job_success} | {xuthem} | {msg}"
-            print(get)
+            xu = dataNX['data']['xu']
+            job_success = dataNX['data']['job_success']
+            xuthem = dataNX['data']['xu_them']
+            msg = dataNX['data']['msg']
+            xuTong = int(re.search(r'\d+', msg).group())
+            self.xuHienTai += xuTong
+            print(f"{xu} | {job_success} | {xuthem} | {msg} | {xuTong} | {self.xuHienTai}")
         else:
             print(f"Yêu cầu không thành công. Mã trạng thái: {response.status_code}")
 # os.system('termux-open-url https:\/\/tiktok.com\/@nguyenngocquang004')
 TDS_token = 'TDSQfikjclZXZzJiOiIXZ2V2ciwiIxETMxgmbhhGdpFGZiojIyV2c1Jye'
-tiktokID = '7286322136226071553'
+tiktokID = '7112712057212584962'
 api = OOP(TDS_token, tiktokID)
 api.datCauHinh()
 api.layNhiemVu()
