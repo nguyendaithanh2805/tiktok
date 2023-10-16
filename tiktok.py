@@ -54,12 +54,6 @@ class OOP:
                         self.guiNhiemVu(id_value)
                         time.sleep(5)
                         self.follow(link_value)
-                        for i in range(id_value):
-                            self.demNV += 1
-                            if self.demNV == 8:
-                                self.nhanXu()
-                                self.demNV = 0
-                                continue
                         # for i in range(len(arr_link_value)):
                         #     link_value = arr_link_value[i]
                         #     print(link_value)
@@ -75,12 +69,12 @@ class OOP:
         response = self.s.get(url)
         dataGNV = response.json()
         print(dataGNV)
-        # for i in range(0, dataGNV['cache'] + 1):
-        #     self.demNV += 1
-        #     if self.demNV == 8:
-        #         self.nhanXu()
-        #         self.demNV = 0
-        #         continue
+        for i in range(0, dataGNV['cache'] + 1):
+            self.demNV += 1
+            if self.demNV == 8:
+                self.nhanXu()
+                self.demNV = 0
+                continue
     def follow(self, link_value):
        os.system(f'termux-open-url {link_value}')
     def nhanXu(self):
