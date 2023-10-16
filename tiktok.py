@@ -52,13 +52,16 @@ class OOP:
                         arr_link_value = item['link']
                         arr_id_value = item['id']
                         print(arr_id_value)
-                        for i in range(len(arr_link_value)):
-                            link_value = arr_link_value[i]
-                            print(link_value)
-                            id_value = arr_id_value[i]
-                            self.guiNhiemVu(id_value)
-                            time.sleep(5)
-                            self.follow(link_value)
+                        self.guiNhiemVu(arr_link_value)
+                        time.sleep(5)
+                        self.follow(arr_id_value)
+                        # for i in range(len(arr_link_value)):
+                        #     link_value = arr_link_value[i]
+                        #     print(link_value)
+                            # id_value = arr_id_value[i]
+                            # self.guiNhiemVu(id_value)
+                            # time.sleep(5)
+                            # self.follow(link_value)
 
             except json.JSONDecodeError:
                 print("Error decoding JSON response.")
