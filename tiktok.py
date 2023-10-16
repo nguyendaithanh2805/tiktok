@@ -67,14 +67,15 @@ class OOP:
         url = 'https://traodoisub.com/api/coin/?type=TIKTOK_FOLLOW_CACHE&id={0}&access_token={1}'.format(id_value, self.TDS_token)
         response = self.s.get(url)
         dataGNV = response.json()
-        print("----")
         print(dataGNV['cache'])
         print("----")
         for i in range(1, dataGNV['cache'] + 1):
+            print('i')
+            print(i)
             self.demNV += 1
-            if self.demNV == 8:
-                self.nhanXu()
-                self.demNV = 1
+        if self.demNV == 8:
+            self.nhanXu()
+            self.demNV = 1
     def follow(self, link_value):
         url = 'termux-open-url {}'.format(link_value)
         os.system(url)
