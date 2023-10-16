@@ -49,12 +49,12 @@ class OOP:
                     exit()
                 else:
                     for item in data['data']:
-                        arr_link_value = item['link']
-                        arr_id_value = item['id']
-                        print(arr_id_value)
-                        self.guiNhiemVu(arr_link_value)
+                        link_value = item['link']
+                        id_value = item['id']
+                        print(id_value)
+                        self.guiNhiemVu(link_value)
                         time.sleep(5)
-                        self.follow(arr_id_value)
+                        self.follow(id_value)
                         # for i in range(len(arr_link_value)):
                         #     link_value = arr_link_value[i]
                         #     print(link_value)
