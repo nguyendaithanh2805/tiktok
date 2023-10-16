@@ -52,9 +52,9 @@ class OOP:
                         link_value = item['link']
                         id_value = item['id']
                         print(id_value)
-                        self.guiNhiemVu(link_value)
+                        self.guiNhiemVu(id_value)
                         time.sleep(5)
-                        self.follow(id_value)
+                        self.follow(link_value)
                         # for i in range(len(arr_link_value)):
                         #     link_value = arr_link_value[i]
                         #     print(link_value)
