@@ -69,9 +69,9 @@ class OOP:
         response = self.s.get(url)
         dataGNV = response.json()
         print(dataGNV)
-        for i in range(0, dataGNV['cache'] + 1):
+        for i in range(1, dataGNV['cache'] + 1):
             self.demNV += 1
-            if self.demNV == 8:
+            if self.demNV == 9:
                 self.nhanXu()
                 self.demNV = 0
                 continue
