@@ -4,7 +4,7 @@ class OOP:
     def __init__(self, TDS_token, tiktokID):
         self.TDS_token = TDS_token
         self.tiktokID = tiktokID
-        self.demNV = 1
+        self.demNV = 0
         self.s = requests.Session()
     def layThongTinAcc(self):
         url = 'https://traodoisub.com/api/?fields=profile&access_token={0}'.format(self.TDS_token)
@@ -56,9 +56,9 @@ class OOP:
                         for i in range(len(arr_link_value)):
                             link_value = arr_link_value[i]
                             id_value = arr_id_value[i]
-                            self.follow(link_value)
-                            time.sleep(5)
                             self.guiNhiemVu(id_value)
+                            time.sleep(5)
+                            self.follow(link_value)
                     except:
                         print('het nv')
             except json.JSONDecodeError:
@@ -72,7 +72,7 @@ class OOP:
         print("----")
         for i in range(1, dataGNV['cache'] + 1):
             self.demNV += 1
-            if self.demNV == 9:
+            if self.demNV == 8:
                 self.nhanXu()
                 self.demNV = 1
     def follow(self, link_value):
