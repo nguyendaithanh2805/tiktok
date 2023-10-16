@@ -94,7 +94,7 @@ class OOP:
             print(f"Yêu cầu không thành công. Mã trạng thái: {response.status_code}")
 # os.system('termux-open-url https:\/\/tiktok.com\/@nguyenngocquang004')
 TDS_token = 'TDSQfikjclZXZzJiOiIXZ2V2ciwiIxETMxgmbhhGdpFGZiojIyV2c1Jye'
-tiktokID = '7112712057212584962'
+tiktokID = '7286322136226071553'
 api = OOP(TDS_token, tiktokID)
 api.datCauHinh()
 api.layNhiemVu()
