@@ -48,17 +48,18 @@ class OOP:
                     print('Đổi tiktok mới, bị giới hạn nhiệm vụ rồi')
                     exit()
                 else:
-                    try:
-                        arr_link_value = [item['link'] for item in data]
-                        arr_id_value = [item['id'] for item in data]
+                    for item in data['data']:
+                        arr_link_value = item['link']
+                        arr_id_value = item['id']
+                        print(arr_id_value)
                         for i in range(len(arr_link_value)):
                             link_value = arr_link_value[i]
+                            print(link_value)
                             id_value = arr_id_value[i]
                             self.guiNhiemVu(id_value)
                             time.sleep(5)
                             self.follow(link_value)
-                    except:
-                        print('het nv')
+
             except json.JSONDecodeError:
                 print("Error decoding JSON response.")
     def guiNhiemVu(self, id_value):
