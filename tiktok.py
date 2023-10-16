@@ -77,7 +77,8 @@ class OOP:
             if self.demNV > 8:
                 self.demNV = 1
     def follow(self, link_value):
-        os.system('termux-open-url {}').format(link_value)
+        url = 'termux-open-url {}'.format(link_value)
+        os.system(url)
     def nhanXu(self):
         url = 'https://traodoisub.com/api/coin/?type=TIKTOK_FOLLOW&id=TIKTOK_FOLLOW_API&access_token={}'.format(TDS_token)
         response = self.s.get(url)
