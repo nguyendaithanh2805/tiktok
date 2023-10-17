@@ -87,25 +87,27 @@ class OOP:
     def follow(self, link_value):
        os.system(f'termux-open-url {link_value}')
     def nhanXu(self):
-        now = datetime.datetime.now()
-        url = 'https://traodoisub.com/api/coin/?type=TIKTOK_FOLLOW&id=TIKTOK_FOLLOW_API&access_token={}'.format(self.TDS_token)
-        response = self.s.get(url)
-        dataNX = response.json()
-        if response.status_code == 200:
-            if 'data' in dataNX:
-                xu = dataNX['data']['xu']
-                job_success = dataNX['data']['job_success']
-                # xuthem = dataNX['data']['xu_them']
-                msg = dataNX['data']['msg']
-                xuTong = int(re.search(r'\d+', xu).group())
-                self.xuHienTai += xuTong
-                self.STT+= 1
-                print(f"[{self.STT}] | {now.strftime('%H:%M:%S')} |  Số job đã làm : {job_success} | THÀNH TOOL | {msg} | {xuTong} | Xu hiện tại : {self.xuHienTai}")
+        try:
+            now = datetime.datetime.now()
+            url = 'https://traodoisub.com/api/coin/?type=TIKTOK_FOLLOW&id=TIKTOK_FOLLOW_API&access_token={}'.format(self.TDS_token)
+            response = self.s.get(url)
+            dataNX = response.json()
+            if response.status_code == 200:
+                if 'data' in dataNX:
+                    xu = dataNX['data']['xu']
+                    job_success = dataNX['data']['job_success']
+                    # xuthem = dataNX['data']['xu_them']
+                    msg = dataNX['data']['msg']
+                    xuTong = int(re.search(r'\d+', xu).group())
+                    self.xuHienTai += xuTong
+                    self.STT+= 1
+                    print(f"[{self.STT}] | {now.strftime('%H:%M:%S')} |  Số job đã làm : {job_success} | THÀNH TOOL | {msg} | {xuTong} | Xu hiện tại : {self.xuHienTai}")
+                else:
+                    print("Nhan xu that bai")
             else:
-                print("Nhan xu that bai")
-        else:
-            print(f"Yêu cầu không thành công. Mã trạng thái: {response.status_code}")
-    
+                print(f"Yêu cầu không thành công. Mã trạng thái: {response.status_code}")
+        except:
+            print('Nhan xu khong duoc vi tiktok bi nha roi')
     def delay(self, seconds):
         for i in range(seconds, 0, -1):
             print(f'Vui lòng đợi sau -> {str(i)} giây', end='\r')
