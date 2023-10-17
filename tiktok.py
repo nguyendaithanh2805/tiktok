@@ -6,6 +6,7 @@ class OOP:
         self.tiktokID = tiktokID
         self.demNV = 0
         self.xuHienTai = 0
+        self.STT = 0
         self.s = requests.Session()
     def layThongTinAcc(self):
         url = 'https://traodoisub.com/api/?fields=profile&access_token={0}'.format(self.TDS_token)
@@ -94,7 +95,8 @@ class OOP:
                 msg = dataNX['data']['msg']
                 xuTong = int(re.search(r'\d+', msg).group())
                 self.xuHienTai += xuTong
-                print(f"{job_success} | {xuthem} | {msg} | {xuTong} | Xu hiện tại : {self.xuHienTai}")
+                self.STT+= 1
+                print(f"[{self.STT}] | {job_success} | {xuthem} | {msg} | {xuTong} | Xu hiện tại : {self.xuHienTai}")
             else:
                 print("eror")
         else:
