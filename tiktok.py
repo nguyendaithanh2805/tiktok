@@ -128,7 +128,7 @@ def load_account_info():
             idtiktok = idtiktok_file.read()
         return TDS_token, idtiktok
     except FileNotFoundError:
-        return None, None, None
+        return None, None
 TDS_token, idtiktok = load_account_info()
 if TDS_token is None or idtiktok is None:
     TDS_token = input('Nhập token TDS : ')
