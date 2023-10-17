@@ -98,10 +98,9 @@ class OOP:
                     job_success = dataNX['data']['job_success']
                     # xuthem = dataNX['data']['xu_them']
                     msg = dataNX['data']['msg']
-                    xuTong = int(re.search(r'\d+', xu).group())
-                    self.xuHienTai += xuTong
+                    
                     self.STT+= 1
-                    print(f"[{self.STT}] | {now.strftime('%H:%M:%S')} |  Số job đã làm : {job_success} | THÀNH TOOL | {msg} | {xuTong} | Xu hiện tại : {self.xuHienTai}")
+                    print(f"[{self.STT}] | {now.strftime('%H:%M:%S')} |  Số job đã làm : {job_success} | THÀNH TOOL | {msg} | Xu hiện tại : {xu}")
                 else:
                     print("Nhan xu that bai")
             else:
