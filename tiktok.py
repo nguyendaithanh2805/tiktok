@@ -52,7 +52,7 @@ class OOP:
                         link_value = item['link']
                         id_value = item['id']
                         self.guiNhiemVu(id_value)
-    
+                        time.sleep(3)
                         self.follow(link_value)
                         self.demNV += 1
                         if self.demNV == 9:
