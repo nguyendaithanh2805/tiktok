@@ -52,7 +52,7 @@ class OOP:
                         link_value = item['link']
                         id_value = item['id']
                         self.guiNhiemVu(id_value)
-                        time.sleep(5)
+    
                         self.follow(link_value)
                         self.demNV += 1
                         if self.demNV == 9:
@@ -73,7 +73,7 @@ class OOP:
         url = 'https://traodoisub.com/api/coin/?type=TIKTOK_FOLLOW_CACHE&id={0}&access_token={1}'.format(id_value, self.TDS_token)
         response = self.s.get(url)
         dataGNV = response.json()
-        print(dataGNV)
+        
         # for i in range(1, dataGNV['cache'] + 1):
         #     self.demNV += 1
         #     if self.demNV == 9:
@@ -94,7 +94,7 @@ class OOP:
                 msg = dataNX['data']['msg']
                 xuTong = int(re.search(r'\d+', msg).group())
                 self.xuHienTai += xuTong
-                print(f"{xu} | {job_success} | {xuthem} | {msg} | {xuTong} | {self.xuHienTai}")
+                print(f"{job_success} | {xuthem} | {msg} | {xuTong} | Xu hiện tại : {self.xuHienTai}")
             else:
                 print("eror")
         else:
