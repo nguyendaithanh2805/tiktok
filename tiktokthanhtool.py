@@ -1,5 +1,5 @@
 import requests, os
-import requests, json, time, datetime, re
+import requests, json, time, datetime
 class OOP:
     def __init__(self, TDS_token, idtiktok):
         self.TDS_token = TDS_token
@@ -49,20 +49,23 @@ class OOP:
                     print('Đổi tiktok mới, bị giới hạn nhiệm vụ rồi')
                     exit()
                 else:
-                    for item in data['data']:
-                        link_value = item['link']
-                        id_value = item['id']
-                        self.guiNhiemVu(id_value)
-                        if (self.STT == answer):
-                            self.nghiChongBlock(chongBlock)
-                        else:
-                            self.delay(seconds)
-                        self.follow(link_value)
-                        self.demNV += 1
-                        if self.demNV == 9:
-                            self.nhanXu()
-                            self.demNV = 0
-                            continue
+                    try:
+                        for item in data['data']:
+                            link_value = item['link']
+                            id_value = item['id']
+                            self.guiNhiemVu(id_value)
+                            if (self.STT == answer):
+                                self.nghiChongBlock(chongBlock)
+                            else:
+                                self.delay(seconds)
+                            self.follow(link_value)
+                            self.demNV += 1
+                            if self.demNV == 9:
+                                self.nhanXu()
+                                self.demNV = 0
+                                continue
+                    except Exception:
+                        pass
                         # for i in range(len(arr_link_value)):
                         #     link_value = arr_link_value[i]
                         #     print(link_value)
@@ -72,7 +75,7 @@ class OOP:
                             # self.follow(link_value)
 
             except json.JSONDecodeError:
-                print("Error decoding JSON response.")
+               pass
     def guiNhiemVu(self, id_value):
         url = 'https://traodoisub.com/api/coin/?type=TIKTOK_FOLLOW_CACHE&id={0}&access_token={1}'.format(id_value, self.TDS_token)
         response = self.s.get(url)
