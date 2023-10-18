@@ -35,6 +35,7 @@ class OOP:
             print(f'{id} | {user} | {msg}')
     def layNhiemVu(self):
         while(True):
+            time.sleep(5)
             url = 'https://traodoisub.com/api/?fields=tiktok_follow&access_token={}'.format(self.TDS_token)
             response = self.s.get(url)
             try:
