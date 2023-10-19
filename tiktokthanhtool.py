@@ -35,7 +35,7 @@ class OOP:
             print(f'{id} | {user} | {msg}')
     def layNhiemVu(self):
         while(True):
-            time.sleep(5)
+            time.sleep(10)
             url = 'https://traodoisub.com/api/?fields=tiktok_follow&access_token={}'.format(self.TDS_token)
             response = self.s.get(url)
             try:
@@ -65,7 +65,7 @@ class OOP:
                                 self.nhanXu()
                         
                                 self.demNV = 0
-                                time.sleep(2)
+                                time.sleep(10)
                                 continue
                     except Exception:
                         pass
