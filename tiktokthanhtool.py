@@ -63,7 +63,9 @@ class OOP:
                             self.demNV += 1
                             if self.demNV == 9:
                                 self.nhanXu()
+                        
                                 self.demNV = 0
+                                time.sleep(2)
                                 continue
                     except Exception:
                         pass
